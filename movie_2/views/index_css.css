@@ -1,0 +1,10 @@
+.bt{
+    height: 3cm;
+    width: 8cm;
+    color: red;
+    display: block;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
