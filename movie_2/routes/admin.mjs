@@ -12,5 +12,6 @@ router.get("/display",admin.displayList);
 router.get("/update",admin.update);
 router.get("/insert/:id?",admin.insert);
 router.post("/store",admin.store);
+router.get("/delete/:id",admin.delete);
 
 export {router}
