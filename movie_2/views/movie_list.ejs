@@ -11,8 +11,11 @@
         <table class="table table-striped">
             <thead class="thead-dark">
             <tr><th class="col">MOVIE ID</th><th class="col">TITLE</th><th class="col">PRICE</th>
-                <%if(flag){%>
+                <%if(flag==1){%>
                     <th>UPDATE</th><th>DELETE</th>
+                <%}%>
+                <%if(flag==2){%>
+                    <th>BOOKING</th>
                 <%}%>
             </tr>
             </thead>
@@ -22,16 +25,19 @@
                     <td><%=movie.movieId%></td>
                     <td><%=movie.movieTittle%></td>
                     <td><%=movie.ticketPrice%></td>
-                    <%if(flag){%>
+                    <%if(flag==1){%>
                         <td><a href="/movie/admin/insert/<%=movie.movieId%>">UPDATE</a></td>
                         <td><a href="/movie/admin/delete/<%=movie.movieId%>">DELETE</a></td>
+                    <%}%>
+                    <%if(flag==2){%>
+                        <td><a href="/movie/user/ticket/booking/<%=movie.movieId%>">Ticket</a></td>
                     <%}%>
                 </tr>
             <%})%>
             </tbody>
         </table>
 
-        <%if(flag){%>
+        <%if(flag==1){%>
             <button type="button" class="btn btn-primary btn-lg"><a href="/movie/admin/insert" style="color: white;">ADD MOVIE</a></button>
         <%}%>
     </body>
