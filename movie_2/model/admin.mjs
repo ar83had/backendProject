@@ -34,6 +34,12 @@ const fn =
         console.log(id);
         let re = movie.find((el)=>{return el.movieId==id})
         return re;
+    },
+    "deleteMov":async function(id){
+        let index = movie.findIndex((el)=>{
+            return el.movieId==id
+        });
+        movie.splice(index,1);
     }
 }
 
