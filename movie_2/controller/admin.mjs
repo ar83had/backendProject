@@ -76,9 +76,14 @@ const admin =
         }
 
         movie.sort((a,b)=>{return a.movieId - b.movieId})
-        let flag=0;
+        let flag=1;
         res.render("movie_list.ejs",{movie,flag})
         res.end();
+    },
+    "delete": async function(req,res){
+        const id  = req.params.id;
+        await fn.deleteMov(id);
+        res.redirect("/movie/admin/update");
     }
 }
 
