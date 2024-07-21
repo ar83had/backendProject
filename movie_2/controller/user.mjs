@@ -15,6 +15,25 @@ const display = function(req,res){
 const main = function(req,res){
     res.render("userMain.ejs");
 }
+const ticket = function(req,res){
+    let flag=2;
+    res.render("movie_list.ejs",{movie,flag});
+}
 
-const user = {display,main};
+const booking = async function(req,res){
+    const id = req.params.id;
+    const movie_b = movie.find((el)=>{
+        return el.movieId==id
+    });
+    res.render("ticketForm.ejs",{movie_b});
+    res.end();
+}
+
+const store = async function(req,res){
+    const data = req.body;
+    res.render("ticket.ejs",{data});
+    res.end();
+}
+
+const user = {display,main,ticket,booking,store};
 export {user};
