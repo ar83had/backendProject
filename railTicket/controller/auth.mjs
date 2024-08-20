@@ -1,4 +1,4 @@
-import {storeUser} from '../model/railTicket.mjs';
+import {storeUser,findUser} from '../model/railTicket.mjs';
 import jwt from 'jsonwebtoken';
 
 
@@ -34,11 +34,36 @@ class User{
             this.res.json("Server error");
         }
     }
+
+    async signIn(){
+        try{
+            const dbr = await findUser(this.#phoneNumber,this.#password);
+            if(dbr){
+                const token = await this.generateToken();
+                this.res.status(202);
+                this.res.json({"token":token});
+            }
+            else
+            {
+                this.res.status(401);
+                this.res.send("Unauthorized");
+            }
+        }
+        catch(err){
+            this.res.status(500);
+            this.res.send("Server Error");
+        }
+    }
 }
 
-async function signUp(req,res){
+function signUp(req,res){
     const user = new User(req.body.phoneNumber,req.body.password,req,res);
     user.signUp();
 }
 
-export{signUp};
+function signIn(req,res){
+    const user = new User(req.body.phoneNumber,req.body.password,req,res);
+    user.signIn();
+}
+
+export{signUp,signIn};

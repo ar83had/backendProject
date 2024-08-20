@@ -1,10 +1,10 @@
 import {database} from './database.mjs';
-const collection = await database("railwayuser","signup");
+const signup = await database("railwayuser","signup");
+const train = await database("railwaytrain","traininfo");
 
 async function gettrainInfo(id){
-    const collection = await database("railwaytrain","traininfo");
 
-    let re = await collection.find({"trainId":id},{_id:0});
+    let re = await train.find({"trainId":id},{_id:0});
     return re[0];
 }
 async function storeUser(phoneNumber,password){
@@ -14,7 +14,7 @@ async function storeUser(phoneNumber,password){
             "password":password
         }
     
-        let re = await collection.insertMany(data);
+        let re = await signup.insertMany(data);
         return false;
     }
     catch(err){
@@ -28,4 +28,10 @@ async function storeUser(phoneNumber,password){
     }
 }
 
-export {gettrainInfo,storeUser};
+async function findUser(phoneNumber,password){
+    const data = {"phoneNumber":phoneNumber,"password":password}
+    const re =  await signup.find(data);
+    return re[0];
+}
+
+export {gettrainInfo,storeUser,findUser};
