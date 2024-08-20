@@ -12,7 +12,7 @@ class User{
     }
 
     async generateToken(){
-        return jwt.sign({"phoneNUmber":this.#phoneNumber},"hellouser");
+        return jwt.sign({"phoneNumber":this.#phoneNumber},"hellouser");
     }
 
     async signUp(){
@@ -66,4 +66,8 @@ function signIn(req,res){
     user.signIn();
 }
 
-export{signUp,signIn};
+function signOut(req,res){
+        res.send("Sign out successfull");
+}
+
+export{signUp,signIn,signOut};

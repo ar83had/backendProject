@@ -49,18 +49,9 @@ class Database{
         password:{
             type:String,
             require:true
-        }
-    }
-
-    ticketSchema={
-        ticketId:{
-            type:String,
-            require:true,
-            unique:true
         },
-        trainId:{
-            type:String,
-            require:true
+        ticket:{
+            type:Object
         }
     }
 
@@ -80,8 +71,6 @@ const database = async function(coll,schema){
     mongoose.connect(database.url);
     if(coll==="railwaytrain" && schema==="traininfo")
         return mongoose.model(coll,database.trainSchema);
-    else if(coll==="railwayuser" && schema==="booking")
-        return mongoose.model("railwayuser",database.ticketSchema);
     else if(coll==="railwayuser" && schema==="signup")
         return mongoose.model("railwayuser",database.signSchema);
 };

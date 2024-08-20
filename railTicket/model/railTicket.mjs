@@ -34,4 +34,18 @@ async function findUser(phoneNumber,password){
     return re[0];
 }
 
-export {gettrainInfo,storeUser,findUser};
+async function find(id){
+    const re = await train.find({"trainId":id});
+    return re[0];
+}
+
+async function update(data,ticket){
+    await train.updateMany({"trainId":data.trainId},{$inc:{"ticketCount":-data.ticketCount}});
+    const phoneNumber = ticket.phoneNumber;
+    delete ticket.phoneNumber;
+    await signup.updateMany({"phoneNumber":phoneNumber},{$set:{"ticket":ticket}});
+    const re = signup.find({"phoneNumber":phoneNumber},{"__v":0,_id:0,"password":0});
+    return re;
+}
+
+export {gettrainInfo,storeUser,findUser,find,update};
