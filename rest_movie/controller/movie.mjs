@@ -192,6 +192,32 @@ async function deleteMovie(req,res){
     }
 }
 
-const fn  = {movieList,getMovie,postMovie,putMovie,deleteMovie}
+async function booking(req,res){
+    try{
+        const data={
+            "movieId":req.body.movieId,
+        }
+        let flag = await model.check(data);
+        if(flag){
+            const tp = parseInt(flag.ticketPrice,10)*req.body.ticketCount;
+            flag.ticketCount = req.body.ticketCount;
+            flag.totalAmount = tp;
+            delete flag._id;
+            res.json(flag);
+            res.status(200);
+        }
+        else{
+            res.status(400);
+            res.send("Bad content");
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500);
+        res.send("Server Error");
+    }
+}
+
+const fn  = {movieList,getMovie,postMovie,putMovie,deleteMovie,booking}
 
 export{fn}

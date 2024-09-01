@@ -7,5 +7,6 @@ router.get("/:id",cont.getMovie)
 router.post("/",cont.postMovie);
 router.put("/:id",cont.putMovie);
 router.delete("/:id",cont.deleteMovie)
+router.post("/booking",cont.booking);
 
 export {router}

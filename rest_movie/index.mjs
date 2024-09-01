@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 
 app.use("/movie/all",movie);
-app.use("/login",login);
-app.use(expressjwt({secret:"secret",algorithms:['HS256']}));
+app.use("/admin",login);
+app.use("/user",login);
+app.use("/movie",expressjwt({secret:"secret",algorithms:['HS256']}),movie);
+app.use("/ticket",expressjwt({secret:"hello user",algorithms:['HS256']}),movie);
 app.use((err,req,res,next)=>{
     if(err.name=="UnauthorizedError")
     {
@@ -25,7 +27,7 @@ app.use((err,req,res,next)=>{
 });
 
 app.use("/movie",movie);
-
+app.use("/ticket",movie);
 app.listen(2000,(err)=>{
     if(!err)
         console.log("Server connnected to port number 2000");

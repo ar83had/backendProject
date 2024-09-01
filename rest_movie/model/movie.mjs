@@ -28,6 +28,12 @@ async function deleteMovie(id)
     return re;
 }
 
-const fn = {get,save,deleteMovie}
+async function check(data){
+    const db = await con("movieMovies");
+    const re = await db.find(data).toArray();
+    return re[0];
+}
+
+const fn = {get,save,deleteMovie,check}
 
 export{fn}
