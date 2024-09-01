@@ -138,7 +138,8 @@ async function putMovie(req,res){
             "movieTittle":req.body.movieTittle,
             "ticketPrice":req.body.ticketPrice
         }
-
+        
+        console.log(movie);
         let re = await model.save(movie,id);
         if(re.matchedCount===0)
         {
@@ -176,7 +177,8 @@ async function deleteMovie(req,res){
         }
         else
         {
-            res.status(204);
+            res.status(200);
+            res.send(re);
         }
     
         res.end();

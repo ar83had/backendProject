@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-
+app.use("/movie/all",movie);
 app.use("/login",login);
 app.use(expressjwt({secret:"secret",algorithms:['HS256']}));
 app.use((err,req,res,next)=>{

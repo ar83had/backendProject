@@ -1,7 +1,7 @@
 import {con} from './mongodb.mjs';
 
 const get = async function(sort,id=null){
-    const movie = await con("movie");
+    const movie = await con("movieMovies");
     let data;
     if(!id)
         data = await movie.find().sort({"movieTittle":sort}).project({_id:0}).toArray();
@@ -12,18 +12,18 @@ const get = async function(sort,id=null){
 }
 
 async function save(data,id){
-    const movie = await con("movie");
+    const movie = await con("movieMovies");
     let re;
     if(!id)
         re = await movie.insertOne(data);
     else
-        re = await movie.updateMany({"movieId":id},{$set:{data}})
+        re = await movie.updateMany({"movieId":id},{$set:data})
     return re;
 }
 
 async function deleteMovie(id)
 {
-    const movie = await con("movie");
+    const movie = await con("movieMovies");
     let re = (await movie).deleteMany({"movieId":id});
     return re;
 }

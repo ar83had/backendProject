@@ -7,9 +7,8 @@ async function login(req,res){
             "username":req.body.username,
             "password":req.body.password
         }
-    
+        
         const user = await model.get(credentials);
-    
         if(user)
         {
             delete user.password;
