@@ -1,7 +1,13 @@
 import {allProduct,filterProduct} from '../model/user.mjs'
 
 async function getallproduct(req,res){
-    const re = await allProduct();
+    let order="";
+    if(req.query.order)
+        order=req.query.order;
+    else
+        order=undefined;
+
+    const re = await allProduct(order);
     res.json(re);
     res.end();
 }
