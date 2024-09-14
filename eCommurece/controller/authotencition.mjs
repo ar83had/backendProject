@@ -1,6 +1,7 @@
 import {storeUser,findUser} from '../model/auth.mjs';
 import jwt from 'jsonwebtoken'
 
+
 async function signUp(req,res){
     try{
         const data = {"phoneNo":req.body.phoneNo,"pws":req.body.pws};
@@ -18,6 +19,7 @@ async function signUp(req,res){
     }
     res.end();
 }
+
 
 async function login(req,res){
     try{
@@ -39,5 +41,7 @@ async function login(req,res){
     }
     res.end();
 }
+
+
 
 export{signUp,login};

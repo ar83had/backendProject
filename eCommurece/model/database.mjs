@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise'
 
+
 async function con(data){
     const connection = await mysql.createConnection({
         host:"localhost",
@@ -11,5 +12,7 @@ async function con(data){
     connection.connect();
     return connection;
 }
+
+
 
 export {con};

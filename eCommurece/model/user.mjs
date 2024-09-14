@@ -14,6 +14,7 @@ async function allProduct(order){
     return re[0];
 }
 
+
 async function filterProduct(low,up){
     const database = "ecommurece";
     const db = await con(database);
@@ -22,4 +23,15 @@ async function filterProduct(low,up){
     console.log(re);
 }
 
-export {allProduct,filterProduct};
+
+async function findItem(data){
+    const database = "ecommurece";
+    const db = await con(database);
+    let query = `select * from ecommureceproduct where id=${data.itemNo}`;
+    const re = await db.query(query);
+    return re[0][0];
+}
+
+
+
+export {allProduct,filterProduct,findItem};
