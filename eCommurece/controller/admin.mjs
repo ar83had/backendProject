@@ -1,4 +1,5 @@
-import { findUser, storeUser } from "../model/auth.mjs"
+import { findUser, storeUser} from "../model/auth.mjs"
+import { storeProduct } from "../model/admin.mjs";
 import jwt  from "jsonwebtoken";
 
 async function signup(req,res){
@@ -51,4 +52,23 @@ async function logIn(req,res){
     res.end();
 }
 
-export{signup,logIn}
+async function addProduct(req,res){
+    try{
+        const data={
+            "id":req.body.id,
+            "name":req.body.name,
+            "price":req.body.price
+        }
+    
+        const re = await storeProduct(data);
+    }
+    catch(err){
+        console.log(err);
+        res.status(500);
+        res.send("Server error");
+    }
+    
+    res.end();
+}
+
+export{signup,logIn,addProduct}
