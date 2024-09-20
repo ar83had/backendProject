@@ -1,12 +1,14 @@
 import express from 'express';
 import {router as auth} from './routes/authontication.mjs';
 import {router as user} from './routes/user.mjs';
+import{router as admin} from './routes/admin.mjs';
 const app = express();
 
 app.use(express.json());
 
 app.use("/user",auth);
 app.use("/product",user);
+app.use("/admin",admin)
 
 app.use((err,req,res,next)=>{
     if(err.name=="UnauthorizedError"){

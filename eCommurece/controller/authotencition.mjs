@@ -13,9 +13,15 @@ async function signUp(req,res){
         res.end();
     }
     catch(err){
+        if(err.errno===1062)
+        {
+            res.send("Already Signup");
+        }
+        else{
+            res.status(500);
+            res.send("Serevr Error");
+        }
         console.log(err);
-        res.status(500);
-        res.send("Serevr Error");
     }
     res.end();
 }

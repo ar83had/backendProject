@@ -12,7 +12,7 @@ async function storeUser(data){
 async function findUser(data){
     const database = "ecommurece";
     const db = await con(database);
-    const query = `select phoneno from ecommureceusers where phoneno=\"${data.phoneno}\" and pws=\"${data.pws}\"`;
+    const query = `select phoneno from ecommureceusers where phoneno=\"${data.phoneNo}\" and pws=\"${data.pws}\"`;
     const re = await db.query(query);
     return re[0][0];
 }
