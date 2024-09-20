@@ -1,8 +1,11 @@
 import express from 'express';
 import {router} from './router/railTciket.mjs';
 import {expressjwt} from 'express-jwt';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cors());        //for communucation with frontend
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
