@@ -1,8 +1,10 @@
 import express from 'express'
 import {router as quote} from './router/quote.mjs'
 import {expressjwt} from 'express-jwt';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
