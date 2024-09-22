@@ -25,6 +25,7 @@ async function getfilterProduct(req,res){
         let lower = req.query.low;
         let upper = req.query.up;
         const re = await filterProduct(lower,upper);
+        res.json(re);
     }
     catch(err){
         console.log(err);

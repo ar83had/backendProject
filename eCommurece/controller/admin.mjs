@@ -1,5 +1,5 @@
 import { findUser, storeUser} from "../model/auth.mjs"
-import { storeProduct } from "../model/admin.mjs";
+import { storeProduct,removeProduct as deleteProduct } from "../model/admin.mjs";
 import jwt  from "jsonwebtoken";
 
 async function signup(req,res){
@@ -64,11 +64,37 @@ async function addProduct(req,res){
     }
     catch(err){
         console.log(err);
-        res.status(500);
-        res.send("Server error");
+        if(err.errno==1062){
+            res.send("item already added");    
+        }
+        else{
+            res.status(500);
+            res.send("Server error");
+        }
     }
     
     res.end();
 }
 
-export{signup,logIn,addProduct}
+async function removeProduct(req,res){
+    try{
+        const id = req.body.id;
+        const re = await deleteProduct(id);
+        if(!re){
+            res.status(400);
+            res.send("item Not Founded");
+        }
+        else{
+            res.status(200);
+            res.send("Delete Successfull");
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(500);
+        res.send("Server Error");
+    }
+    res.end();
+}
+
+export{signup,logIn,addProduct,removeProduct}

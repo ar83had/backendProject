@@ -20,7 +20,7 @@ async function filterProduct(low,up){
     const db = await con(database);
     const query = `select * from ecommureceproduct where price between ${low} and ${up}`;
     const re = await db.query(query);
-    console.log(re);
+    return re[0];
 }
 
 
