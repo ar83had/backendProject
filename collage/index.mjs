@@ -7,25 +7,26 @@ import {expressjwt} from 'express-jwt';
 const app = express();
 app.use(express.json());
 
-app.get("/collage_api",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("hello arshad bhai");
     res.end();
-})
-app.use("/collage/teacher/login",teacher);
-app.use("/collage/student/login",student);
+});
 
-app.use("/collage/teacher",expressjwt({secret:"helloteacher",algorithms:['HS256']}),teacher);
-app.use("/collage/student",expressjwt({"secret":"hellostudent","algorithms":['HS256']}),student);
-app.use((err,req,res,next)=>{
-    if(err.name=="UnauthorizedError"){
-        console.log("unauthorizedError");
-        res.status(401);
-        res.send("Unauthorized");
-        res.end();
-    }
-    else
-        next();
-})
+// app.use("/collage/teacher/login",teacher);
+// app.use("/collage/student/login",student);
+
+// app.use("/collage/teacher",expressjwt({secret:"helloteacher",algorithms:['HS256']}),teacher);
+// app.use("/collage/student",expressjwt({"secret":"hellostudent","algorithms":['HS256']}),student);
+// app.use((err,req,res,next)=>{
+//     if(err.name=="UnauthorizedError"){
+//         console.log("unauthorizedError");
+//         res.status(401);
+//         res.send("Unauthorized");
+//         res.end();
+//     }
+//     else
+//         next();
+// })
 
 app.listen(2000,(err)=>{
     if(err)
