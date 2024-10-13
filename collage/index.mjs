@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/collage_api",(req,res)=>{
-    console.log("hello arshad bhai ");
+    res.send("hello arshad bhai");
     res.end();
 })
 app.use("/collage/teacher/login",teacher);
