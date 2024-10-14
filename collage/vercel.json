@@ -1,15 +1,15 @@
 {
-    "version":2,
-    "builds":[
-        {
-            "src":"./index.mjs",
-            "use":"@vercel/node"
-        }
+    "version": 2,
+    "builds": [
+      {
+        "src": "collage/index.mjs",
+        "use": "@vercel/node"
+      }
     ],
-    "routes":[
-        {
-            "src":"./(.*)",
-            "dest":"./index.mjs"
-        }
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "collage/index.mjs"
+      }
     ]
-}
+  }
