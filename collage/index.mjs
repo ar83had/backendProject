@@ -8,7 +8,7 @@ console.log("hi");
 const app = express();
 app.use(express.json());
 
-app.get("/demo",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("hello arshad bhai");
     res.end();
 });
