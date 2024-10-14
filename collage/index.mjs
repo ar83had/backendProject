@@ -3,6 +3,7 @@ import {router as teacher} from './router/teacher.mjs';
 import {router as student} from './router/student.mjs';
 
 import {expressjwt} from 'express-jwt';
+console.log("hi");
 
 const app = express();
 app.use(express.json());
