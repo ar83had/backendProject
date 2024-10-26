@@ -3,7 +3,6 @@ import {router as teacher} from './router/teacher.mjs';
 import {router as student} from './router/student.mjs';
 
 import {expressjwt} from 'express-jwt';
-console.log("hi");
 
 const app = express();
 app.use(express.json());
@@ -34,10 +33,10 @@ app.use((err,req,res,next)=>{
         next();
 })
 
-// app.listen(2000,(err)=>{
-//     if(err)
-//         console.log(err);
-//     else
-//         console.log("Server connected on port number 2000");
-// })
+app.listen(2000,(err)=>{
+    if(err)
+        console.log(err);
+    else
+        console.log("Server connected on port number 2000");
+})
 
