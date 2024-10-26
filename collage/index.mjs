@@ -12,7 +12,8 @@ app.get("/",(req,res)=>{
     res.send("hello arshad bhai it is /");
     res.end();
 });
-app.get("/publish ",(req,res)=>{
+
+app.get("/publish",(req,res)=>{
     res.send("hello arshad bhai it is /publish");
     res.end();
 });
