@@ -8,8 +8,12 @@ console.log("hi");
 const app = express();
 app.use(express.json());
 
-app.get("/publuish",(req,res)=>{
-    res.send("hello arshad bhai");
+app.get("/",(req,res)=>{
+    res.send("hello arshad bhai it is /");
+    res.end();
+});
+app.get("/publish ",(req,res)=>{
+    res.send("hello arshad bhai it is /publish");
     res.end();
 });
 
