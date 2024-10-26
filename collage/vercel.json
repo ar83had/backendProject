@@ -11,5 +11,8 @@
         "src": "/(.*)",
         "dest": "./index.mjs"
       }
+    ],
+    "rewrites":[
+      {"source":"/publish","destination":"./index.mjs"}
     ]
   }
