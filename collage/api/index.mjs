@@ -1,6 +1,6 @@
 import express from 'express'
-import {router as teacher} from './router/teacher.mjs';
-import {router as student} from './router/student.mjs';
+import {router as teacher} from '../router/teacher.mjs';
+import {router as student} from '../router/student.mjs';
 
 import {expressjwt} from 'express-jwt';
 
